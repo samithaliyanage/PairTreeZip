@@ -1,0 +1,21 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+repositories {
+    jcenter()
+    mavenCentral()
+    maven {
+        url "http://nexus.htrc.illinois.edu/content/groups/public/"
+    }
+}
+
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.7.13'
+    compile 'com.beust:jcommander:1.48'
+    compile 'com.google.guava:guava:19.0'
+    compile 'org.slf4j:slf4j-log4j12:1.7.21'
+    compile 'gov.loc:pairtree:1.1.2'
+    testCompile 'junit:junit:4.12'
+}
+
+mainClassName = "VolumeZipper"
