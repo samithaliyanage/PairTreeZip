@@ -13,7 +13,7 @@ import java.util.zip.ZipOutputStream;
 public class ZipUtil {
     private static Logger log = LoggerFactory.getLogger(VolumeZipper.class);
 
-    public static File zip(List<String> srcFiles, String destination) throws IOException {
+    public static File zip(List<String[]> srcFiles, String destination) throws IOException {
         // create byte buffer
         byte[] buffer = new byte[1024];
         File temp = new File(destination);
@@ -21,23 +21,27 @@ public class ZipUtil {
         ZipOutputStream zos = new ZipOutputStream(fos);
         int volumesNotFound = 0;
 
-        for (String f : srcFiles) {
-            File srcFile = new File(f);
-            if (!srcFile.exists()) {
-                log.error("Cannot find : " + f);
-                volumesNotFound ++;
-                continue;
+        for (String[] fl : srcFiles) {
+            for (String f : fl){
+                File srcFile = new File(f);
+                if (!srcFile.exists()) {
+                    log.error("Cannot find : " + f);
+                    volumesNotFound ++;
+                    continue;
+                }
+                FileInputStream fis = new FileInputStream(srcFile);
+                // begin writing a new ZIP entry, positions the stream to the start of the entry data
+                zos.putNextEntry(new ZipEntry(srcFile.getName()));
+                int length;
+                while ((length = fis.read(buffer)) >= 0) {
+                    zos.write(buffer, 0, length);
+                }
+                zos.closeEntry();
+                // close the InputStream
+                fis.close();
             }
-            FileInputStream fis = new FileInputStream(srcFile);
-            // begin writing a new ZIP entry, positions the stream to the start of the entry data
-            zos.putNextEntry(new ZipEntry(srcFile.getName()));
-            int length;
-            while ((length = fis.read(buffer)) >= 0) {
-                zos.write(buffer, 0, length);
-            }
-            zos.closeEntry();
-            // close the InputStream
-            fis.close();
+
+
         }
 
         log.info("Total volume count: " + srcFiles.size());

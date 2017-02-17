@@ -10,4 +10,10 @@ public class Options {
 
     @Parameter(names = {"--destination-path", "-dp"}, description = "Output file location.", required = true)
     public String destinationPath;
+
+    @Parameter(names = {"--clean-volume-ids", "-ci"}, description = "Are volume ids clean.")
+    public boolean isCleanIds = false;
+
+    @Parameter(names = {"--mets-and-jsons", "-mj"}, description = "Add mets and jsons to output.")
+    public boolean needMetsAndJsons = false;
 }

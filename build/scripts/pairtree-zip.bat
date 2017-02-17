@@ -69,7 +69,7 @@ set CMD_LINE_ARGS=%$
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%\lib\pairtree-zip.jar;%APP_HOME%\lib\jcommander-1.48.jar;%APP_HOME%\lib\guava-19.0.jar;%APP_HOME%\lib\slf4j-log4j12-1.7.21.jar;%APP_HOME%\lib\pairtree-1.1.2.jar;%APP_HOME%\lib\log4j-1.2.17.jar;%APP_HOME%\lib\slf4j-api-1.7.21.jar
+set CLASSPATH=%APP_HOME%\lib\pairtree-zip.jar;%APP_HOME%\lib\jcommander-1.48.jar;%APP_HOME%\lib\guava-19.0.jar;%APP_HOME%\lib\slf4j-log4j12-1.7.21.jar;%APP_HOME%\lib\pairtree-1.1.2.jar;%APP_HOME%\lib\zt-zip-1.11.jar;%APP_HOME%\lib\log4j-1.2.17.jar;%APP_HOME%\lib\slf4j-api-1.7.21.jar
 
 @rem Execute pairtree-zip
 "%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %PAIRTREE_ZIP_OPTS%  -classpath "%CLASSPATH%" VolumeZipper %CMD_LINE_ARGS%
