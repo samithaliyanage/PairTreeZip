@@ -16,4 +16,7 @@ public class Options {
 
     @Parameter(names = {"--mets-and-jsons", "-mj"}, description = "Add mets and jsons to output.")
     public boolean needMetsAndJsons = false;
+
+    @Parameter(names = {"--with-pairtree-root", "-wr"}, description = "Add pairtree root.")
+    public boolean withPairtreeRoot = false;
 }

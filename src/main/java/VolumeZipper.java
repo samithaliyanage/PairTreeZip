@@ -43,9 +43,15 @@ public class VolumeZipper {
             } else {
                 volId = vol.substring(indexOfFirstPeriod + 1);
             }
-
-            Path volumeRoot = Files.createDirectory(Paths.get(tmp.getAbsolutePath(),volId));
             String library = vol.substring(0, indexOfFirstPeriod);
+            Path volumeRoot;
+            if(options.withPairtreeRoot){
+                volumeRoot = Files.createDirectories(Paths.get(tmp.getAbsolutePath(),library, "pairtree_root",Joiner.on("/").join(volId.split("(?<=\\G.{2})")),volId));
+            }else{
+                volumeRoot = Files.createDirectory(Paths.get(tmp.getAbsolutePath(),volId));
+            }
+
+
 
             Path volZip = Paths.get(String.format("%s/%s/pairtree_root/%s/%s/%s.zip", options.pairTreeRoot, library, Joiner.on("/").join(volId.split("(?<=\\G.{2})")), volId, volId));
 
