@@ -57,6 +57,8 @@ public class VolumeZipper {
 
             if (Files.exists(volZip)) {
                 Files.copy(volZip, Paths.get(volumeRoot.toString(), String.format("%s.zip", volId)));
+            }else{
+                log.info(vol + " is not available");
             }
 
             if (options.needMetsAndJsons) {
