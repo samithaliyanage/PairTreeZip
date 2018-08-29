@@ -25,7 +25,12 @@ pairtree-zip/bin/pairtree-zip -pr <pairtree_root_path> -vl <volume_list_path> -d
 pairtree-zip/bin/pairtree-zip -pr <pairtree_root_path> -vl <volume_list_path> -dp <destination_path> -ci
 ```
 
-## To get Volume (zip + mets.xml + json) when the volume list is clean
+## To get Volumes (zip + mets.xml + json) when the volume list is clean
 ```
 pairtree-zip/bin/pairtree-zip -pr <pairtree_root_path> -vl <volume_list_path> -dp <destination_path> -ci -mj
+```
+
+## To get Volumes with pairtree root when the volume list is clean
+```
+pairtree-zip/bin/pairtree-zip -pr <pairtree_root_path> -vl <volume_list_path> -dp <destination_path> -ci -mj -wr
 ```
